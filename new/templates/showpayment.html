@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+{%block main%}
+{%load static%}
+
+<div class="container">
+        <h2 align="center">Payment Details</h2>
+        <div class="table-responsive">
+            <table class="table  text-center">
+                <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>User name</th>
+                        <th>Transaction Id</th>
+                        <th>Status</th>
+                        <th>Time</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                {% for data in paymentdata %}
+                <tbody id="serviceTableBody">
+                    <!-- This section will be populated with form data -->
+                    <tr>
+                        <td>{{data.order_id}}</td>
+                        <td>{{data.user_id}}</td>
+                        <td>{{data.transaction_id}}</td>
+                        <td>{{data.status1}}</td>
+                        <td>{{data.time}}</td>
+                        <td>{{data.a_amount}}</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+                {%endfor%}
+            </table>
+        </div>
+</div>
+
+{%endblock%}

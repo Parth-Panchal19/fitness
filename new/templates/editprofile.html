@@ -1,0 +1,73 @@
+{%extends 'base.html'%}
+{%block main%}
+{%load static%}
+
+<!-- inner banner -->
+
+<!-- //covers -->
+
+<!-- form -->
+<section class="w3l-form1">
+	<div class="form">
+			<div class="wrapper">
+				<div class="form-content">
+					<div class="form-left" align="center">
+
+						<div class="middle">
+							<h4 align="center">Change Profile</h4>
+						</div>
+                        <br><br>
+						<form action="/update" method="post" class="signin-form" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div class="form-input">
+                                <label>Name</label>
+                                <input type="text" name="name1"  value="{{data.u_name}}" placeholder="Your Name" required />
+                            </div>
+
+                            <div class="form-input">
+                                <label>Date of Birth</label>
+                                <input type="date" name="dob1" value="{{data.dob | date:'Y-m-d'}}" placeholder="Your Date of Birth" required
+                                    oninput="
+                                        const dob = new Date(this.value);
+                                        const today = new Date();
+                                        if (dob >= today) {
+                                            this.setCustomValidity('Date of birth must be in the past');
+                                            this.reportValidity();
+                                        } else {
+                                            this.setCustomValidity('');
+                                            this.reportValidity();
+                                        }
+                                    ">
+                            </div>
+
+                            <div class="form-input">
+                                <label>Phone</label>
+                                <input type="tel" name="phone1" placeholder="Your Phone Number" value="{{data.mobile}}" pattern="[0-9]{10}" title="Please enter a 10-digit phone number" required
+                                    oninput="
+                                        const phoneNumber = this.value.trim();
+                                        if (!/^[0-9]{10}$/.test(phoneNumber)) {
+                                            this.setCustomValidity('Phone number must be 10 digits');
+                                            this.reportValidity();
+                                        } else {
+                                            this.setCustomValidity('');
+                                            this.reportValidity();
+                                        }
+                                    ">
+
+                            </div>
+
+                            <div class="form-input">
+                                <label>Address</label>
+                                <textarea name="address1"  cols="30" rows="5" placeholder="Your Address">{{data.address}}</textarea>
+                            </div>
+
+                            <button class="btn">Submit</button>
+                        </form>
+					</div>
+				</div>
+			</div>
+	</div>
+</section>
+<!-- //form -->
+{%endblock%}

@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{%block main%}
+{%load static%}
+
+    <!-- Categories Section Begin -->
+    <section class="categories categories-grid spad">
+        <div class="categories__post">
+            <div class="container">
+                <div class="categories__grid__post">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-8">
+                            <div class="breadcrumb__text">
+                                <h2>Categories: <span>Exercise List</span></h2>
+                                <div class="breadcrumb__option">
+                                    <a href="#">Home</a>
+                                    <span>Exercise</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                {%for e in exe%}
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="categories__post__item">
+                                        <div class="categories__post__item__text">
+                                            <div class="col-12">
+                                                <img src="media/{{e.e_image}}" width="500px" height="250px" alt="">
+                                            </div>
+                                            <span class="post__label">{{e.e_name}}</span>
+                                            <p>{{e.e_description}}</p>
+<!--                                            <h4><a href="#">{{e.calories_burned_per_minute}}[calories_burned_per_minute]</a></h4>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                {%endfor%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Categories Section End -->
+
+{%endblock%}

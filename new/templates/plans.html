@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block main %}
+{% load static %}
+
+<div id="generic_price_table">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- PRICE HEADING START -->
+                    <div class="price-heading clearfix">
+                        <h1>Subscription</h1>
+                    </div>
+                    <!-- // PRICE HEADING END -->
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <!-- BLOCK ROW START -->
+            <div class="row">
+                {% for i in plandetails %}
+                <div class="col-md-4">
+                    <!-- PRICE CONTENT START -->
+                    <div class="generic_content clearfix">
+                        <!-- HEAD PRICE DETAIL START -->
+                        <div class="generic_head_price clearfix">
+                            <!-- HEAD CONTENT START -->
+                            <div class="generic_head_content clearfix">
+                                <!-- HEAD START -->
+                                <div class="head_bg"></div>
+                                <div class="head">
+                                    <span class="plan-name">{{ i.plan_name }}</span>
+                                    <!-- TOOLTIP CONTENT -->
+                                    <div class="tooltip-content">
+                                        <h3>{{ i.plan_name }}</h3>
+                                        <p>{{ i.desc }}</p>
+                                    </div>
+                                </div>
+                                <!-- // HEAD END -->
+                            </div>
+                            <!-- // HEAD CONTENT END -->
+
+                            <!-- PRICE START -->
+                            <div class="generic_price_tag clearfix">
+                                <span class="price">
+                                    <span class="sign"></span>
+                                    <span class="currency">{{ i.amount }}</span>
+                                    <span class="month">rs</span>
+                                </span>
+                            </div>
+                            <!-- // PRICE END -->
+                        </div>
+                        <!-- // HEAD PRICE DETAIL END -->
+
+                        <!-- FEATURE LIST START -->
+                        <div class="generic_feature_list">
+                            <ul>
+                                <li>{{ i.duration }}</li>
+                                <li>{{ i.status }}</li>
+                                <li>{{ i.payment_method }}</li>
+                                <li>{{ i.start_date }}</li>
+                                <li>{{ i.end_date }}</li>
+                            </ul>
+                        </div>
+                        <!-- // FEATURE LIST END -->
+
+                        <!-- BUTTON START -->
+                        <div class="generic_price_btn clearfix">
+                            <a class="" href="/payment/{{ i.id }}">Get Started</a>
+                        </div>
+                        <!-- // BUTTON END -->
+
+                    </div>
+                    <!-- // PRICE CONTENT END -->
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <footer>
+        </footer>
+    </div>
+    <style>
+        .tooltip-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 9999;
+        }
+
+        .plan-name:hover + .tooltip-content {
+            display: block;
+        }
+    </style>
+    {% endblock %}

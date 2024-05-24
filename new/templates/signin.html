@@ -1,0 +1,253 @@
+{%extends 'base.html'%}
+{%block main%}
+{%load static%}
+<!-- Close button with Font Awesome icon -->
+<style>
+/* Styles for the modal container */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* Styles for the modal content */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10% auto;
+    margin-top: 310px;
+    width: 37%;
+    height: 430px;
+}
+
+/* Styles for the close button */
+
+
+/* Styles for the heading and paragraph inside the modal */
+h2, p {
+    color: #333;
+}
+
+/* Styles for the form elements */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+</style>
+    <!-- Sign In Section Begin -->
+    <div class="signin">
+        <div class="signin__warp">
+
+            <div class="signin__content">
+                <div class="signin__logo">
+                    <a href="#"><img src="static/img/diet.png" alt=""></a>
+                </div>
+<!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore dolore-->
+<!--                    magna aliqua viverra.</p>-->
+                <div class="d-flex justify-content-end">
+                    <button class="close-btn" onclick="closeForm()"><i class="fa fa-times"></i></button>
+                </div>
+
+
+                <div class="signin__form">
+
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="false">
+                                Sign up
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">
+                                Sign in
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane" id="tabs-2" role="tabpanel">
+                            <div class="signin__form__text">
+<!--                                <p>with your social network :</p>-->
+<!--                                <div class="signin__form__signup__social">-->
+<!--                                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>-->
+<!--                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>-->
+<!--                                    <a href="#" class="google"><i class="fa fa-google"></i></a>-->
+<!--                                </div>-->
+<!--                                <div class="divide">or</div>-->
+                                <form action="/login" method="post">
+                                    {% csrf_token %}
+                                    <input type="email" name="email2" placeholder="User Name*">
+                                    <input type="password" name="password2" placeholder="Password" required
+                                        oninput="
+                                            const password = this.value.trim();
+                                            const hasLowerCase = /[a-z]/.test(password);
+                                            const hasDigit = /\d/.test(password);
+
+                                            if (password.length < 6) {
+                                                this.setCustomValidity('Password must be at least 6 characters long');
+                                                this.reportValidity();
+                                            } else if (!hasLowerCase) {
+                                                this.setCustomValidity('Password must contain at least one lowercase letter');
+                                                this.reportValidity();
+                                            } else if (!hasDigit) {
+                                                this.setCustomValidity('Password must contain at least one digit');
+                                                this.reportValidity();
+                                            } else {
+                                                this.setCustomValidity('');
+                                                this.reportValidity();
+                                            }
+                                        ">
+                                    <button type="submit" class="site-btn">Sign In</button>
+                                    <br><br>
+                                    <a href="#" onclick="openForgotPasswordModal()">Forgot password?</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <div class="signin__form__text">
+<!--                                <p>with your social network :</p>-->
+<!--                                <div class="signin__form__signup__social">-->
+<!--                                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>-->
+<!--                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>-->
+<!--                                    <a href="#" class="google"><i class="fa fa-google"></i></a>-->
+<!--                                </div>-->
+<!--                                <div class="divide">or</div>-->
+                                <form action="/signup" method="post" onsubmit="return validateSignUpForm()" name="signUpForm">
+                                    {% csrf_token %}
+                                    <input type="text" name="name1" placeholder="User Name*">
+                                    <input type="email" name="email1" placeholder="Email" required
+                                           oninput="
+									const email = this.value.trim();
+									const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+									if (!isValidEmail) {
+										this.setCustomValidity('Please enter a valid email address');
+										this.reportValidity();
+									} else {
+										this.setCustomValidity('');
+										this.reportValidity();
+									}
+								" />
+                                    <input type="password" name="password1" placeholder="Password" required>
+                                    <input type="date" name="dob1" placeholder="Date of Birth" required
+                                    oninput="
+                                        const dob = new Date(this.value);
+                                        const today = new Date();
+                                        if (dob >= today) {
+                                            this.setCustomValidity('Date of birth must be in the past');
+                                            this.reportValidity();
+                                        } else {
+                                            this.setCustomValidity('');
+                                            this.reportValidity();
+                                        }
+                                    ">
+                                    <div class="d-flex mb-3">
+                                        <span><input type="radio" name="gender1" value="male"> Male</span> <span><input type="radio" name="gender1" value="female"> Female</span>
+                                    </div>
+                                    <input type="tel" name="phone1" placeholder="Phone No" pattern="[0-9]{10}" required
+                                        oninput="
+                                        const phoneNumber = this.value.trim();
+                                        if (!/^[0-9]{10}$/.test(phoneNumber)) {
+                                            this.setCustomValidity('Phone number must be 10 digits');
+                                            this.reportValidity();
+                                        } else {
+                                            this.setCustomValidity('');
+                                            this.reportValidity();
+                                        }
+                                    ">
+                                    <input type="text" name="address1" placeholder="Address" required>
+
+                                    <button type="submit" class="site-btn">Register Now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeForgotPasswordModal()">&times;</span>
+            <h2>Forgot Password</h2>
+            <p>Enter your email address to reset your password.</p>
+            <form action="/forgotpassword" method="post" onsubmit="return validateForgotPasswordForm()" name="forgotPasswordForm">
+                {% csrf_token %}
+                <input type="email" name="email2" placeholder="Email" required>
+                <button type="submit" class="site-btn">Reset Password</button>
+            </form>
+        </div>
+    </div>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ezH/6FfQg9skKfCssPDiW6pNxdWMIKaeL6S9FvRajQbVHjKkFFC4FbVdSNQpaF2e" crossorigin="anonymous">
+
+    <!-- Sign In Section End -->
+<script>
+    function openForgotPasswordModal() {
+        document.getElementById('forgotPasswordModal').style.display = 'block';
+    }
+
+    function closeForgotPasswordModal() {
+        document.getElementById('forgotPasswordModal').style.display = 'none';
+    }
+
+    function closeForm() {
+        // Redirect to the index page
+        window.location.href = '/';
+    }
+
+    function validateSignUpForm() {
+        var name = document.forms["signUpForm"]["name1"].value;
+        var email = document.forms["signUpForm"]["email1"].value;
+        var password = document.forms["signUpForm"]["password1"].value;
+        var dob = document.forms["signUpForm"]["dob1"].value;
+        var gender = document.querySelector('input[name="gender1"]:checked');
+        var phone = document.forms["signUpForm"]["phone1"].value;
+        var address = document.forms["signUpForm"]["address1"].value;
+
+        if (name == "" || email == "" || password == "" || dob == "" || !gender || phone == "" || address == "") {
+            alert("Please fill in all fields");
+            return false;
+        }
+
+        // Password validation
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters long");
+            return false;
+        }
+
+        if (!/[a-z]/.test(password)) {
+            alert("Password must contain at least one lowercase letter");
+            return false;
+        }
+
+        if (!/\d/.test(password)) {
+            alert("Password must contain at least one digit");
+            return false;
+        }
+
+        return true;
+    }
+
+</script>
+
+{%endblock%}

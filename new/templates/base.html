@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zxx">
+{%load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Foodeiblog Template">
+    <meta name="keywords" content="Foodeiblog, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DreamBody</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Unna:400,700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="static/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="static/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="static/css/style.css" type="text/css">
+    <link rel="stylesheet" href="static/css/editprofile.css" type="text/css">
+
+    <link rel="stylesheet" href="static/css/customer.css" type="text/css">
+    <link href="static/css/plans.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="./index.html"><img src="static/img/humberger/humberger-logo.png" alt=""></a>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                {%if request.session.log_id %}
+<!--                <li><a href="/">Recipes</a></li>-->
+<!--                <li><a href="/">Dinner</a></li>-->
+<!--                <li><a href="/">Desserts</a></li>-->
+
+                {% if not diet_page_visible %}
+                <li><a href="/plans">Plans</a></li>
+                {%else%}
+                 <li><a href="/list">Diet List</a></li>
+                {% endif %}
+
+                <li><a href="/grid">Exercise List</a></li>
+
+                {%endif%}
+                <li><a href="/about1">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li>
+                        {% if request.session.log_id %}
+                        <a href="/logout" class="primary-btn">Logout</a>
+                        {%else%}
+                        <a href="/signin" class="primary-btn">SIGN UP</a>
+                        {%endif%}
+                </li>
+
+            </ul>
+        </nav>
+
+        <div id="mobile-menu-wrap"></div>
+
+        <div class="humberger__menu__about">
+            <div class="humberger__menu__title sidebar__item__title">
+                <h6>About me</h6>
+            </div>
+            <img src="static/img/humberger/humberger-about.jpg" alt="">
+            <h6>Hi every one! I,m Lena Mollein.</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+            <div class="humberger__menu__about__social sidebar__item__follow__links">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-youtube-play"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-envelope-o"></i></a>
+            </div>
+        </div>
+        <div class="humberger__menu__subscribe">
+            <div class="humberger__menu__title sidebar__item__title">
+                <h6>SIGN UP</h6>
+            </div>
+            <p>Subscribe to our newsletter and get our newest updates right on your inbox.</p>
+            <form action="/signin" method="post">
+                <input type="text" class="email-input" placeholder="Your email">
+                <label for="agree-check">
+                    I agree to the terms & conditions
+                    <input type="checkbox" id="agree-check">
+                    <span class="checkmark"></span>
+                </label>
+                <button type="submit" class="site-btn">Signup</button>
+            </form>
+        </div>
+    </div>
+    <!-- Humberger End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container p-3">
+                <div class="row">
+
+                    <div class="col-lg-12 col-md-10 order-md-2 order-3">
+                        <nav class="header__menu">
+                            <ul>
+                                <li class="active"><a href="/">Home</a></li>
+                                {% if request.session.log_id %}
+<!--                                <li><a href="#">Recipes</a>-->
+                                    <div class="header__megamenu__wrapper">
+                                        <div class="header__megamenu">
+                                            <div class="header__megamenu__item">
+                                                <div class="header__megamenu__item--pic set-bg"
+                                                    data-setbg="static/img/megamenu/p-1.jpg">
+                                                    <div class="label">Vegan</div>
+                                                </div>
+                                                <div class="header__megamenu__item--text">
+                                                    <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="header__megamenu__item">
+                                                <div class="header__megamenu__item--pic set-bg"
+                                                    data-setbg="static/img/megamenu/p-2.jpg">
+                                                    <div class="label">Vegan</div>
+                                                </div>
+                                                <div class="header__megamenu__item--text">
+                                                    <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="header__megamenu__item">
+                                                <div class="header__megamenu__item--pic set-bg"
+                                                    data-setbg="static/img/megamenu/p-3.jpg">
+                                                    <div class="label">Vegan</div>
+                                                </div>
+                                                <div class="header__megamenu__item--text">
+                                                    <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="header__megamenu__item">
+                                                <div class="header__megamenu__item--pic set-bg"
+                                                    data-setbg="static/img/megamenu/p-4.jpg">
+                                                    <div class="label">Vegan</div>
+                                                </div>
+                                                <div class="header__megamenu__item--text">
+                                                    <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="header__megamenu__item">
+                                                <div class="header__megamenu__item--pic set-bg"
+                                                    data-setbg="static/img/megamenu/p-5.jpg">
+                                                    <div class="label">Vegan</div>
+                                                </div>
+                                                <div class="header__megamenu__item--text">
+                                                    <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                {% if not diet_page_visible %}
+                                <li><a href="/plans">Plans</a></li>
+                                {%else%}
+                                 <li><a href="/list">Diet List</a></li>
+                                {% endif %}
+
+                                <li><a href="/exerciselist">Exercise List</a></li>
+                                <li><a href="/feedback">Feedback</a></li>
+                                <li><a href="/showprofile">Profile</a></li>
+                                {%endif%}
+                                <li><a href="/about1">About</a></li>
+                                <li><a href="/contact">Contact</a></li>
+                                {% if request.session.log_id %}
+                                <li><a href="/logout" class="primary-btn p-2">Logout</a>
+                                {%else%}
+                                <li><a href="/signin" class="primary-btn p-2">SIGN UP</a></li>
+                                {%endif%}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-6">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="static/img/diet.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header Section End -->
+
+    {% include "message.html" %}
+{% block main %}
+
+
+{% endblock %}
+
+   <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container-fluid">
+<!--            <div class="footer__instagram">-->
+<!--                <div class="footer__instagram__avatar">-->
+<!--                    <div class="footer__instagram__avatar&#45;&#45;pic">-->
+<!--                        <img src="static/img/footer/instagram-avatar.jpg" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="footer__instagram__avatar&#45;&#45;text">-->
+<!--                        <h5>@ foodieblog</h5>-->
+<!--                        <span>23,7k follower</span>-->
+<!--                    </div>-->
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                        <div class="footer__instagram__item set-bg" data-setbg="static/img/footer/10.jpg"></div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                        <div class="footer__instagram__item set-bg" data-setbg="static/img/footer/2.jpg"></div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                        <div class="footer__instagram__item set-bg" data-setbg="static/img/footer/11.jpg"></div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                        <div class="footer__instagram__item set-bg" data-setbg="static/img/footer/5.jpg"></div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                        <div class="footer__instagram__item set-bg" data-setbg="static/img/footer/1.jpg"></div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+                        <div class="footer__instagram__item set-bg" data-setbg="static/img/footer/ip-5.jpg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__text">
+                        <div class="footer__logo">
+                            <a href="#"><img src="static/img/diet.png" alt=""></a>
+                        </div>
+<!--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt-->
+<!--                            ut<br /> labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus-->
+<!--                            commodo viverra<br /> maecenas accumsan lacus vel facilisis. </p>-->
+                        <div class="footer__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-envelope-o"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.slicknav.js"></script>
+    <script src="static/js/owl.carousel.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
+
+

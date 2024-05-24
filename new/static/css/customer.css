@@ -1,0 +1,57 @@
+/* Add this CSS to your customer.html or create a new CSS file */
+
+.customer__form__text {
+    margin: 50px auto;
+    max-width: 600px;
+    padding: 30px; /* Increased padding for better spacing */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Slightly increased border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.customer__form__text h1 {
+    font-size: 24px;
+    margin-bottom: 20px; /* Reduced margin for better spacing */
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 25px; /* Slightly increased margin for better spacing */
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-left: 20px;
+    margin-bottom: 8px; /* Added margin below label for better spacing */
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px; /* Slightly increased padding for better input height */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px; /* Increased margin below input for better spacing */
+}
+
+.form-check {
+    margin-left: 10px;
+    margin-bottom: 15px; /* Increased margin below form-check for better spacing */
+}
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 12px; /* Slightly increased padding for better button size */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}

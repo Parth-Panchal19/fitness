@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block main %}
+{% load static %}
+
+    <!-- inner banner -->
+
+    <!-- //covers -->
+
+    <!-- user profile data -->
+    <section class="w3l-form1">
+        <div class="form">
+            <div class="wrapper">
+                <div class="form-content">
+                    <div class="form-left">
+                        <div class="middle">
+                            <h2 align="center">User Profile</h2><br><br>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table  text-center" width="700">
+                                <thead>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th>Date of Birth</th>
+                                        <th>Phone No</th>
+                                        <th>Gender</th>
+                                        <th>Address</th>
+                                        <th>Edit Profile</th>
+                                        <th>Change Password</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{userdata.u_name}}</td>
+                                        <td>{{userdata.dob}}</td>
+                                        <td>{{userdata.mobile}}</td>
+                                        <td>{{userdata.gender}}</td>
+                                        <td>{{userdata.address}}</td>
+                                        <td><a href="/editprofile" class="btn bg-success text-white">Edit</a></td>
+                                        <td><a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenterPw">Change Password</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="exampleModalCenterPw" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="login px-4 mx-auto mw-100">
+                            <h3 class="text-center mb-4">Change Your Password</h3>
+                            <form action="/changepw" method="post" enctype="multipart/form-data" class="contact-form">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="cpw">Current Password:</label>
+                                        <input class="form-control" name="oldpassword" id="cpw" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Current Password'" placeholder="Enter Current Password">
+                                    </div>
+                                <div class="form-group">
+                                    <label for="npw">New Password:</label>
+                                        <input class="form-control" name="password" id="npw" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$" title="Password should contain atleast 1 uppercase, 1 lowercase, 1 number, 1 special character and min 8 and max 12 character." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter New Password'" placeholder="Enter New Password">
+                                    </div>
+
+                                <button type="submit" class="btn btn-primary submit mb-4">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    <!-- //user profile data -->
+{% endblock %}

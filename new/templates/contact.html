@@ -1,0 +1,66 @@
+{%extends 'base.html'%}
+{%block main%}
+{%load static%}
+
+    <!-- Contact Section Begin -->
+    <section class="contact spad">
+        <div class="container">
+            <div class="contact__text">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb__text">
+                            <h2>Contact</h2>
+                            <div class="breadcrumb__option">
+                                <a href="#">Home</a>
+                                <span>Contact</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="contact__map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235013.74843718624!2d72.41493399983852!3d23.020474096845316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1705642730479!5m2!1sen!2sin" width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="contact__widget">
+                            <ul>
+                                <li>
+                                    <i class="fa fa-map-marker"></i>
+                                    <span>Dream Body(The Anti-Diet Solution), nikol, Ahmedabad</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-mobile"></i>
+                                    <span>Phone: 6325964578</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span>Email: nuga@gmai.com</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="contact__form">
+                            <div class="contact__form__title">
+                                <h2>gET IN TOUCH</h2>
+                            </div>
+                            <form action="/contact" method="post">
+                                {% csrf_token %}
+                                <input type="text" name='name' placeholder="Name">
+                                <input type="text" name='email'  placeholder="Email">
+                                <input type="text" name='subject'  placeholder="Subject">
+                                <textarea id="message" name="message" rows="6" placeholder="Message" required></textarea>
+                                <textarea id="address" name="address" rows="6" placeholder="Address" required></textarea>
+
+<!--                                <textarea placeholder="Message"></textarea>-->
+                                <button type="submit" class="site-btn">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+
+{%endblock%}
