@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-x$*8y6!*3%v#5z3&m%4e8x=adhq+bzu@ab_w!4wj!963qtl!()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', 'itness-dp0b.onrender.com']
 
 # Application definition
 
@@ -127,8 +127,8 @@ USE_TZ = True
 
 import os
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'myproject/static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [BASE_DIR / "static"] # new
+STATIC_ROOT = BASE_DIR / "staticfiles" # new
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
